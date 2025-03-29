@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz rezerwacji</title>
+    <script>
+        function generujFormularze() {
+            const liczba = document.getElementById("osoby").value;
+            const kontener = document.getElementById("formularze_osob");
+            kontener.innerHTML = ""; // wyczyść poprzednie pola
+
+            for (let i = 1; i <= liczba; i++) {
+                const div = document.createElement("div");
+                div.innerHTML = `
+                    <fieldset>
+                        <legend>Dane osoby ${i}</legend>
+                        Imię: <input type="text" name="imie_osoba${i}" required><br>
+                        Nazwisko: <input type="text" name="nazwisko_osoba${i}" required><br>
+                    </fieldset><br>
+                `;
+                kontener.appendChild(div);
+            }
+        }
+    </script>
+</head>
+<body>
+<h2>Formularz rezerwacji</h2>
+<form action="rezerwacja.php" method="post">
+    Liczba osób:
+    <select name="osoby" id="osoby" onchange="generujFormularze()" required>
+        <option value="">-- wybierz --</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+    </select><br>
+
+    Imię: <input type="text" name="imie" required><br>
+    Nazwisko: <input type="text" name="nazwisko" required><br>
+    Adres: <input type="text" name="adres" required><br>
+    E-mail: <input type="email" name="email" required><br>
+    Karta kredytowa: <input type="text" name="karta" required><br>
+    Data pobytu (początek): <input type="date" name="data" required><br>
+    Godzina przyjazdu: <input type="time" name="godzina" required><br>
+
+    Łóżko dla dziecka: <input type="checkbox" name="lozko_dziecko"><br>
+
+    Udogodnienia:
+    <select name="udogodnienia">
+        <option>brak</option>
+        <option>klimatyzacja</option>
+        <option>popielniczka</option>
+        <option>klimatyzacja i popielniczka</option>
+    </select><br><br>
+
+    <!-- Tu pojawią się dane osób -->
+    <div id="formularze_osob"></div>
+
+    <input type="submit" value="Rezerwuj">
+</form>
+</body>
+</html>

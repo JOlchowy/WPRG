@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator</title>
+</head>
+<body>
+<form action="kalkulator.php" method="post">
+  <label>
+    <input type="number" name="liczba1" required>
+  </label>
+  <label>
+    <select name="dzialanie">
+      <option value="dodawanie">+</option>
+      <option value="odejmowanie">-</option>
+      <option value="mnozenie">*</option>
+      <option value="dzielenie">/</option>
+    </select>
+  </label>
+  <label>
+    <input type="number" name="liczba2" required>
+  </label>
+  <input type="submit" value="Oblicz">
+</form>
+</body>
+</html>
